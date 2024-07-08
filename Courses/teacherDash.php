@@ -163,7 +163,7 @@
                         <tr>
                             <td>Customer</td>
                             <td>Puspita Anjum</td>
-                            <td><a href="#" class="btn">View</a></td>
+                            <td><a href="../payment/next.php" class="btn">View</a></td>
                         </tr>
                     </table>
                 </div>

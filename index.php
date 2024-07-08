@@ -62,7 +62,7 @@
       </form> -->
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li class="nav-item custom-nav-item">
-          <a class="nav-link" href="#">Teacher's Login</a>
+          <a class="nav-link" href="Login/teacherLogin.php">Teacher's Login</a>
         </li>
       </ul>
     </div>
@@ -323,7 +323,7 @@
 
          <!-- footer starts -->
           <footer class="container-fluid bg-dark text-center p-2">
-            <small class="text-white">Copyright &copy; 2023 || Designed by .... || Admin Login</small>
+            <small class="text-white">Copyright &copy; 2023 || Designed by .... ||<a class="nav-link" href="admin/adminlogin.php"> Admin Login</a></small>
           </footer>
           <!-- footer ends -->
 
