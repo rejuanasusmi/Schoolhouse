@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+}
+
+.Sinale-product{
+    margin-top: 30px;
+}
+.flex-box{
+    display:flex;
+    width:1000px;
+    margin:auto;
+}
+
+.left{
+    width:50%;
+}
+
+.big-img{
+    width:300px;
+    
+}
+.big-img img{
+    width:inherit;
+    height:350px;
+}
+.images{
+    display:flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 15px;
+}
+.small-img{
+    width:50px;
+    overflow: hidden;
+    border: 1.5px solid black;
+}
+.small-img img{
+    width: inherit;
+    height:
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.small-img:hover img{
+    transform: scale(1.2);
+}
+.url{
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: 500;
+    color:rgb(255,102,0);
+}
+.pname{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 60px;
+}
+.ratings i{
+    color:rgb(255,136,0);
+}
+
+.details{
+    font-size: 18 px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.price{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.quantity{
+    display: flex;
+}
+.quantity p{
+    font-size: 18 px;
+    font-weight: 500;
+}
+.quantity input{
+    width: 40px;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 15px;
+}
+.btn-box{
+    display: flex;
+    margin-top: 40px;
+}
+.btn-box button{
+    font-size: 18px;
+    padding: 8px 25px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+.continue-btn{
+    width:155px;
+    background-color: #ff5e00;
+    margin-right: 20px;
+}
+.finish-btn{
+    width:155px;
+    background-color: #00aeff;
+}
+.continue-btn:hover{
+    background-color: #ff3e00;
+}
+.finish-btn:hover{
+    background-color: #0066ff;
+}
