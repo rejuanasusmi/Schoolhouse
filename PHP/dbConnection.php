@@ -1,5 +1,5 @@
 <?php
-    $servername = "127.0.0.1:3307"; // Change to your database server
+    $servername = "127.0.0.1:3325"; // Change to your database server
     $username = "root";
     $password = "";
     $dbname = "schoolhouse";
