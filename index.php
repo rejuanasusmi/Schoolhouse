@@ -46,10 +46,10 @@
         <li class="nav-item custom-nav-item">
           <a class="nav-link" href="#">Logout</a>
         </li>
-        <li class="nav-item custom-nav-item">
+        <li class="nav-item custom-nav-item" data-bs-toggle="modal" data-bs-target="#stuLoginModal">
           <a class="nav-link" href="#">Login</a>
         </li>
-        <li class="nav-item custom-nav-item">
+        <li class="nav-item custom-nav-item" data-bs-toggle="modal" data-bs-target="#stuRegModal">
           <a class="nav-link" href="#">Register</a>
         </li>
         <li class="nav-item custom-nav-item">
@@ -83,7 +83,7 @@
         <div class="vid-content">
             <h1 class="my-content"> Welcome to SchoolHouse</h1>
             <small class="my-content">Learn New Things with Creativity</small><br>
-            <a href="#" class="btb btn-danger">Get Started</a>
+            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#stuRegModal">Get Started</a>
         </div>
       </div>
      <!-- end video bg -->
@@ -327,6 +327,81 @@
           </footer>
           <!-- footer ends -->
 
+    <!-- Registration starts -->
+    <!-- Modal -->
+<div class="modal fade" id="stuRegModal" tabindex="-1" aria-labelledby="stuRegModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5" id="stuRegModalLabel">Student Registration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+      <form>
+        <div class="form-group">
+            <i class="fas fa-user"></i><label for="stuname" class="pl-2 font-weight-bold">Name</label><input type="text"
+            class="form-control" placeholder="Name" name="stuname" id="stuname" value="<?php if(isset($_POST['submit'])){echo $name;}?>" required>
+        </div>
+        <div class="form-group">
+            <i class="fas fa-envelope"></i><label for="stuemail" class="pl-2 font-weight-bold">Email</label><input type="email"
+            class="form-control" placeholder="Email" name="stuemail" id="stuemail" value="<?php if(isset($_POST['submit'])){echo $email;}?>" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="form-group">
+            <i class="fas fa-key"></i><label for="stupass" class="pl-2 font-weight-bold">New Password</label><input type="password"
+            class="form-control" placeholder="Password" name="stupass" id="stupass" required>
+        </div>
+        <div class="form-group">
+            <i class="fas fa-key"></i><label for="stupassconfirm" class="pl-2 font-weight-bold">Confirm Password</label><input type="password"
+            class="form-control" placeholder="Confirm Password" name="stupassconfirm" id="stupassconfirm" required>
+        </div>
+</form>
+<!-- end form -->
+      </div>
+      <div class="modal-footer">
+      <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Registration ends -->
+
+       <!-- Student Login starts -->
+    <!-- Modal -->
+<div class="modal fade" id="stuLoginModal" tabindex="-1" aria-labelledby="stuLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5" id="stuLoginModalLabel">Student Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+      <form id="stuLoginForm">
+        <div class="form-group">
+            <i class="fas fa-envelope"></i><label for="stulogemail" class="pl-2 font-weight-bold">Email</label><input type="email"
+            class="form-control" placeholder="Email" name="stulogemail" id="stulogemail">
+        </div>
+        <div class="form-group">
+            <i class="fas fa-key"></i><label for="stulogpass" class="pl-2 font-weight-bold">Password</label><input type="password"
+            class="form-control" placeholder="Password" name="stulogpass" id="stulogpass">
+        </div>
+</form>
+<!-- end form -->
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="stuLogBtn">Login</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Student Login ends -->
+
 
     <!-- Jquery, JS and Font Awesome JS -->
     <script src="js/jquery.min.js"></script>
@@ -356,6 +431,55 @@
 </script>
     </body>
 </html>
+
+
+
+<!-- PHP registration -->
+
+<?php
+    // Include database connection file
+    include 'PHP/dbConnection.php';
+
+    // Check if form is submitted
+    if (isset($_POST['submit'])) {
+        // Get form inputs and escape strings to prevent SQL injection
+        $name = mysqli_real_escape_string($conn, $_POST['stuname']);
+        $email = mysqli_real_escape_string($conn, $_POST['stuemail']);
+        $password = $_POST['stupass'];
+        $confirm_password = $_POST['stupassconfirm'];
+
+        // Check if email already exists
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email='$email'")) > 0) {
+            echo "<script>alert('$email - this email already has a registered account')</script>";
+        } else {
+            // Check if passwords match
+            if ($password === $confirm_password) {
+                // Hash the password
+                $hashedPassword = md5($password);
+
+                // Insert data into the database
+                $query = "INSERT INTO students (name, email, password) VALUES ('$name', '$email', '$hashedPassword')";
+                if (mysqli_query($conn, $query)) {
+                    echo "<script>
+                            alert('Account Successfully Created'); 
+                            // document.location.href='StudentLog.php'; 
+                          </script>";
+                } else {
+                    echo "<script>
+                            alert('Something Went Wrong'); 
+                            // document.location.href='studentRegistration.php'; 
+                          </script>";
+                }
+            } else {
+                echo "<script>
+                        alert('Password does not match'); 
+                        // document.location.href='studentRegistration.php'; 
+                      </script>";
+            }
+        }
+    }
+?>
+
 
 
 
