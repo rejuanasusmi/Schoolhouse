@@ -278,6 +278,7 @@
          <!-- Social info starts -->
           <div class="container-fluid bg-primary">
           <div class="row text-white text-center p-1">
+            
             <div class="col-sm">
                 <a href="#" class="text-white social-hover"><i class="fab fa-facebook"></i>Facebook</a>
             </div>
