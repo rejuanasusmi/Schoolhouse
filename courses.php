@@ -1,12 +1,11 @@
 <!-- including header starts -->
 <!-- <?php
-
+include('./mainInclude/header.php');
 ?> -->
 <!-- including header ends -->
 
 <?php
 require_once('vendor/autoload.php');
-include('./mainInclude/header.php');
 
 $callbackURL = 'http://localhost/bKash-Payment-geteway-setup-by-php-main/bKash-Payment-geteway-setup-by-php-main/?a=15';  // Set a valid callback URL
 
@@ -125,13 +124,9 @@ if (isset($_GET['paymentID'], $_GET['status']) && $_GET['status'] == 'success') 
         print_r($obj);
     } else {
         echo "Error executing payment: " . $resultdata;
+    }
 }
-}
-
 ?>
-   <!-- start course page -->
-
-
    <!-- Popular Course starts -->
    <div class="container mt-5">
     <h1 class="text-center">All Courses</h1>
@@ -147,45 +142,16 @@ if (isset($_GET['paymentID'], $_GET['status']) && $_GET['status'] == 'success') 
                     </div>
                     <div class="card-footer">
                         <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="./?a=20">Enroll</a>
+                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="./?a=980">Enroll</a>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-md-4 mb-4">
-            <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
-                <div class="card">
-                    <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Learn Guitar Easy Way</h5>
-                        <p class="card-text">mkkihihigugvjufyufyjh</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4 mb-4">
-            <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
-                <div class="card">
-                    <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Learn Guitar Easy Way</h5>
-                        <p class="card-text">mkkihihigugvjufyufyjh</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+        
 
     <!-- 2nd -->
-    <div class="row mt-4">
+    
+       
         <div class="col-md-4 mb-4">
             <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
                 <div class="card">
@@ -196,43 +162,15 @@ if (isset($_GET['paymentID'], $_GET['status']) && $_GET['status'] == 'success') 
                     </div>
                     <div class="card-footer">
                         <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4 mb-4">
-            <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
-                <div class="card">
-                    <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Learn Guitar Easy Way</h5>
-                        <p class="card-text">mkkihihigugvjufyufyjh</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4 mb-4">
-            <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
-                <div class="card">
-                    <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Learn Guitar Easy Way</h5>
-                        <p class="card-text">mkkihihigugvjufyufyjh</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
+                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="./?a=980">Enroll</a>
                     </div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+
+       
 
         <!--Popular Course ends  -->
     <!-- end course page -->

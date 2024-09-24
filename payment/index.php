@@ -1,3 +1,65 @@
+<!-- including header starts -->
+<!-- <?php
+include('../mainInclude/header.php');
+?> -->
+<!-- including header ends -->
+<?php
+// Include your database connection file
+include '../PHP/dbConnection.php';
+//session_start(); // Start the session
+
+// Initialize session array for approved courses
+if (!isset($_SESSION['approved_courses'])) {
+    $_SESSION['approved_courses'] = [];
+}
+
+// Handle Approve Request via POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['approve'])) {
+    $course_id = $_POST['course_id'];
+    // Add course_id to the approved list if not already approved
+    if (!in_array($course_id, $_SESSION['approved_courses'])) {
+        $_SESSION['approved_courses'][] = $course_id;
+    }
+}
+// Handle Delete Request via POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
+    $course_id = $_POST['course_id'];
+    // Delete course from the database
+    $sql = "DELETE FROM courses WHERE course_id = $course_id";
+    $conn->query($sql);
+}
+// Fetch all courses from the courses table
+$query = "SELECT courses.*, teachers.name AS teacher_name FROM courses 
+          JOIN teachers ON courses.teacher_id = teachers.teacher_id";  // Fetch course details along with teacher's name
+$result = mysqli_query($conn, $query);
+
+// Initialize an empty array to hold the courses
+$courses = [];
+
+if (mysqli_num_rows($result) > 0) {
+    // Fetch all courses and store them in the $courses array
+    while ($row = mysqli_fetch_assoc($result)) {
+        $courses[] = $row;
+    }
+} else {
+    // If no courses are found, handle it in the HTML section
+    $courses = [];
+}
+
+// Fetch approved courses based on session
+$approvedCourses = [];
+if (!empty($_SESSION['approved_courses'])) {
+    $approvedCoursesIds = implode(",", $_SESSION['approved_courses']);
+    $approvedSql = "SELECT * FROM courses WHERE course_id IN ($approvedCoursesIds)";
+    $approvedResult = mysqli_query($conn, $approvedSql);
+
+    if (mysqli_num_rows($approvedResult) > 0) {
+        while ($approvedRow = mysqli_fetch_assoc($approvedResult)) {
+            $approvedCourses[] = $approvedRow;
+        }
+    }
+}
+?>
 <?php
 require_once('vendor/autoload.php');
 
@@ -121,153 +183,45 @@ if (isset($_GET['paymentID'], $_GET['status']) && $_GET['status'] == 'success') 
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Demo Shop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                </div>
-            </div>
-        </header>
-        <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Demo Product 1</h5>
-                                    <span class="text-muted text-decoration-line-through">৳ 20.00</span>
-                                    ৳ 15
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./?a=15">Buy Now</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Demo Product 2</h5>
-                                    <span class="text-muted text-decoration-line-through">৳ 50.00</span>
-                                    ৳ 25
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./?a=25">Buy Now</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Demo Product 3</h5>
-                                    <span class="text-muted text-decoration-line-through">৳ 30.00</span>
-                                    ৳ 20
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./?a=20">Buy Now</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
+   <!-- Popular Course starts -->
+<div class="container mt-5">
+ <h1 class="text-center">All Courses</h1>
+    <div class="row mt-4">
+        <!-- 1st -->
+        <?php if (!empty($approvedCourses)): ?>
+            <?php foreach ($approvedCourses as $course): ?>
+        <div class="col-md-4 mb-4">
             <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
                 <div class="card">
                     <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
                     <div class="card-body">
-                        <h5 class="card-title">Learn Guitar Easy Way</h5>
-                        <p class="card-text">mkkihihigugvjufyufyjh</p>
-                    </div>
+                            <h5 class="card-title"><?php echo htmlspecialchars($course['course_title']); ?></h5>
+                            <p class="card-text"><?php echo htmlspecialchars($course['course_topic']); ?></p>
+                            <p class="card-text">Price: <strong><?php echo htmlspecialchars($course['course_price']); ?></strong></p>
+                        </div>
                     <div class="card-footer">
-                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
-                        <a class="btn btn-outline-dark mt-auto"  href="./?a=">Enroll</a>
+                      
+                        <a class="btn btn-primary text-white font-weight-bolder float-right" href="./?a=<?php echo htmlspecialchars($course['course_price']); ?>">Enroll</a>
+
                     </div>
                 </div>
             </a>
         </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Demo Product 4</h5>
-                                    <span class="text-muted text-decoration-line-through">৳ 60.00</span>
-                                    ৳ 35
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./?a=35">Buy Now</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Demo Shop 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+        <?php endforeach; ?>
+        <?php else: ?>
+            <p class='text-center'>No approved courses available</p>
+        <?php endif; ?>
+
+    <!-- 2nd -->
+    </div>
+</div>
+
+       
+
+        <!--Popular Course ends  -->
+    <!-- end course page -->
+<!-- including footer starts-->
+<?php
+include('../mainInclude/footer.php');
+?>
+<!-- including footer ends -->
