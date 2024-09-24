@@ -1,33 +1,64 @@
 <?php
-// Fetch only approved courses
-$sql = "SELECT c.course_id, c.course_title, c.course_topic, c.course_price, t.teacher_name
-        FROM courses c
-        JOIN teachers t ON c.teacher_id = t.teacher_id
-        WHERE c.is_approved = 1";
-$result = $conn->query($sql);
+// Include your database connection file
+include '../PHP/dbConnection.php';
+
+// Fetch all courses from the courses table
+$query = "SELECT courses.*, teachers.teacher_id FROM courses 
+          JOIN teachers ON courses.teacher_id = teachers.teacher_id";  // Fetch course details along with teacher's name
+$result = mysqli_query($conn, $query);
+
+// Initialize an empty array to hold the courses
+$courses = [];
+
+if (mysqli_num_rows($result) > 0) {
+    // Fetch all courses and store them in the $courses array
+    while ($row = mysqli_fetch_assoc($result)) {
+        $courses[] = $row;
+    }
+} else {
+    // If no courses are found, handle it in the HTML section
+    $courses = [];
+}
 ?>
 
-<div class="container mt-5">
-    <h1 class="text-center">All Courses</h1>
-    <div class="row mt-4">
-        <?php while($row = $result->fetch_assoc()): ?>
-            <div class="col-md-4 mb-4">
-                <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Information</title>
+    <style>
+        /* Add your existing styles here */
+    </style>
+</head>
+<body>
+
+
+<!-- Approved Courses Section -->
+<div class="approved-container mt-5">
+    <h2>Approved Courses</h2>
+    <div class="row">
+        <?php if (!empty($approvedCourses)): ?>
+            <?php foreach ($approvedCourses as $course): ?>
+                <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img height="250" width="400" src="https://via.placeholder.com/400x250" class="card-img-top" alt="Course Image"/>
+                        <img height="250" width="400" src="<?php echo htmlspecialchars($course['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($course['course_title']); ?>"/>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $row['course_title']; ?></h5>
-                            <p class="card-text"><?php echo $row['course_topic']; ?></p>
+                            <h5 class="card-title"><?php echo htmlspecialchars($course['course_title']); ?></h5>
+                            <p class="card-text"><?php echo htmlspecialchars($course['course_topic']); ?></p>
+                            <p class="card-text">Price: <strong>$<?php echo htmlspecialchars($course['course_price']); ?></strong></p>
                         </div>
                         <div class="card-footer">
-                            <p class="card-text d-inline">Price: <small><del>$<?php echo $row['course_price']; ?></del></small><span class="font-weight-bolder">$<?php echo $row['course_price']; ?></span></p>
-                            <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
+                            <a class="btn btn-primary text-white" href="#">Enroll</a>
                         </div>
                     </div>
-                </a>
-            </div>
-        <?php endwhile; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class='text-center'>No approved courses available</p>
+        <?php endif; ?>
     </div>
 </div>
 
-<?php $conn->close(); ?>
+</body>
+</html>

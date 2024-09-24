@@ -133,6 +133,13 @@ if (!$course_result) {
             </a>
         </li>
         <li>
+            <a href="course.php"> <!-- Link to the teachers' dashboard -->
+                <span class="icon">
+                    <ion-icon name="book-outline"></ion-icon>
+                </span>
+                <span class="title">Courses</span>
+            </a>
+        </li>
        
 
         <li>
