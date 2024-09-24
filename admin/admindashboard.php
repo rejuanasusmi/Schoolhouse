@@ -137,7 +137,7 @@ if (!$course_result) {
                 <span class="icon">
                     <ion-icon name="book-outline"></ion-icon>
                 </span>
-                <span class="title">Courses</span>
+                <span class="title">Course</span>
             </a>
         </li>
        

@@ -226,6 +226,22 @@ if (isset($_GET['paymentID'], $_GET['status']) && $_GET['status'] == 'success') 
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 mb-4">
+            <a href="#" class="btn" style="text-align: left; padding:0px; margin:0px;">
+                <div class="card">
+                    <img height="250" width="400" src="https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Guitar"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Learn Guitar Easy Way</h5>
+                        <p class="card-text">mkkihihigugvjufyufyjh</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text d-inline">Price: <small><del>&#478 980</del></small><span class="font-weight-bolder">&#478 980</span></p>
+                        <a class="btn btn-outline-dark mt-auto"  href="./?a=">Enroll</a>
+                    </div>
+                </div>
+            </a>
+        </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>

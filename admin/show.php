@@ -23,10 +23,101 @@ if (mysqli_num_rows($result) > 0) {
 // Close the connection
 mysqli_close($conn);
 ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Feedback</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
 
+        h1 {
+            font-size: 36px;
+            color: white;
+            margin: 0;
+        }
 
+        /* Container Styles */
+        .container-fluid {
+            padding: 50px 0;
+            background-color: #4e008e;
+        }
 
-<div class="container-fluid mt-5" style="background-color: #4e008e" id="Feedback">
+        /* Feedback Section */
+        .testimonial-slider {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .testimonial-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .testimonial-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .testimonial-item h4 {
+            font-size: 22px;
+            color: #4e008e;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-item p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Carousel Styles */
+        .owl-carousel {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .testimonial-item {
+                padding: 20px 15px;
+            }
+
+            .testimonial-item h4 {
+                font-size: 20px;
+            }
+
+            .testimonial-item p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid mt-5" id="Feedback">
     <h1 class="text-center testyheading p-4">Student's Feedback</h1>
     <div class="testimonial-slider">
         <div id="owl-demo" class="owl-carousel owl-theme">
@@ -46,3 +137,31 @@ mysqli_close($conn);
         </div>
     </div>
 </div>
+
+</body>
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+
+<!-- Initialize the carousel -->
+<script>
+    $(document).ready(function() {
+        $("#owl-demo").owlCarousel({
+            items: 3, // Number of items to display
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive: {
+                0: { items: 1 },
+                768: { items: 2 },
+                1024: { items: 3 }
+            }
+        });
+    });
+</script>
+
+</html>
