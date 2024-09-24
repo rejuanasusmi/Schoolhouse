@@ -33,7 +33,7 @@
         //     }
 
         // }
-        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM students WHERE email='{$email}'"))>0){
+        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM teachers WHERE email='{$email}'"))>0){
             //$msg ="<div class='alert alert=danger'>{$email} - this email already exits</div>";
             echo "<script> alert('{$email}-this email alreay have a registered account')</script>";
         }else{
@@ -89,7 +89,7 @@
                 <input type="text" name="Name" placeholder="Name" value="<?php if(isset($_POST['submit'])){echo $name;}?>" required>
                 <input type="email" name="Email"placeholder="Email" value="<?php if(isset($_POST['submit'])){echo $email;}?>" required>
                 <input type="phone" name="Phone" placeholder="Phone" value="<?php if(isset($_POST['submit'])){echo $phone;}?>" required>
-                <input type="text" name="school_name" placeholder="School Name" value="<?php if(isset($_POST['submit'])){echo $school;}?>" required>
+                <input type="text" name="school_name" placeholder="Institute Name" value="<?php if(isset($_POST['submit'])){echo $school;}?>" required>
                 <input type="text" name="address" placeholder="Address" value="<?php if(isset($_POST['submit'])){echo $address;}?>" required>
                <!-- <input type="file" name="image" required> -->
                 <input type="password"name="password" placeholder="Password" required>
