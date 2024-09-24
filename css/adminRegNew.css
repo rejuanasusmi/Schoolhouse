@@ -1,106 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-*{
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat',sans-serif;
+    box-sizing: border-box;
 }
-body{
+
+body {
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #fcf1ef
+    height: 100vh;
+    background: url('../imm/hh.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-.wrapper{
-    width:720px;
-    height:530px;
-    background: white;
-    color:black;
-    border-radius: 20px;
-    margin-bottom: 20px;
+/* Wrapper for the form */
+.wrapper {
+    width: 400px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
-.wrapper h1{
-    font-size: 36px;
+
+/* Title styling */
+.wrapper h1 {
     text-align: center;
-    color:Black;
-}
-.wrapper .input-box{
-    width:100%;
-    height:50px;
-    margin: 30px 0;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #21a9d3;
 }
 
-.input-box input{
+/* Input box for form fields */
+.input-box {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-box input {
     width: 100%;
-    height: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
     background: transparent;
-    border: none;
-    outline:none;
-    border: 2px solid rgb(216, 212, 212);
-    border-radius: 40px;
-    font-size: 16px;
-    color:black;
-    padding:20px 45px 20px 20px;
-}
-.input-box input::placeholder{
-    color:black;
-}
-input-box{
-    position: absolute;
-    right:20px;
-    top:50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 3px;
-}
-.remember-forgot a{
-    color: #fff;
-    text-decoration: none;
-}
-.remember-forgot a:hover{
-    text-decoration: underline;
-}
-
-.wrapper .btn{
-    width: 100%;
-    height: 45px;
-    background: pink;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    cursor: pointer;
     font-size: 16px;
     color: #333;
-    font-weight: 600;
+    outline: none;
 }
 
-.wrapper .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 15px;
+.input-box input::placeholder {
+    color: #aaa;
+    font-size: 16px;
 }
 
-.register-link p a{
+
+.input-box input:focus {
+    border-bottom: 2px solid #21a9d3;
+}
+
+/* File input styling */
+.input-box input[type="file"] {
+    border-bottom: none;
+    margin-top: 10px;
+}
+
+.input-box input[type="file"]::file-selector-button {
+    background-color: #21a9d3;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.input-box input[type="file"]::file-selector-button:hover {
+    background-color: #1b8cb5;
+}
+
+/* Submit button styling */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #21a9d3;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
     color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
 }
-.register-link p a:hover{
-    text-decoration: underline;
+
+.btn:hover {
+    background-color: #1b8cb5;
 }

@@ -20,12 +20,18 @@
                     session_start();
                     $_SESSION['teacher_email'] = $email;
                     echo "<script> alert('Successfully Logged In');
-                    document.location.href='./../Courses/teacherDash.php';
+                    document.location.href='../Courses/teacherdashboard.php';
                     </script>";
+
+                    $_SESSION['teacher_email1'] = $email;
+                    echo "<script> alert('Successfully Logged In');
+                    document.location.href='../Courses/incompleteCourses.php';
+                    </script>";
+
                 }
                 else{
                     echo "<script> alert('Incorrect Password');
-                    document.location.href='teacherLog.php';
+                    document.location.href='teacherLogin.php';
                     </script>";
                 }
             }else{

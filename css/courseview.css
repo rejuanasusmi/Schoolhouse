@@ -1,0 +1,104 @@
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+boby{
+    min-height: 100vh;
+}
+
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+h1,h2{
+    color: #168aad;
+}
+h3{
+    color:#999;
+}
+.btn{
+    background: white;
+    color:-webkit-linear-gradient(20deg,#34a0a4,#168aad);
+    border:2px solid -webkit-linear-gradient(20deg,#34a0a4,#168aad);
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+.btn:hover{
+    color:white;
+    background: -webkit-linear-gradient(20deg,#34a0a4,#168aad);
+    padding:3px 8px;
+    
+}
+.title{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 10px;
+    border-bottom: 2px solid #999;
+}
+table{
+    padding:10px;
+}
+th,td{
+    text-align: left;
+    padding:8px;
+}
+
+.container{
+    position: absolute;
+    right: 0;
+    width: 90vw;
+    height: 100vh;
+    background: white;
+}
+
+
+.container .content1{
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+    background: white;
+}
+
+
+.container .content1 .cards{
+    padding:20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .content1 .cards .card{
+    width:250px;
+    height: 150px;
+    background: white;
+    margin: 20px 10px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+}
+.container .content1 .cards .card:hover{
+    cursor: pointer;
+    box-shadow: 0px 2px 70px 0 rgb(253 71 102/5%);
+    transform: translateY(-0.5px);
+}
+.container .content1 .add-btn{
+    padding:0 43%;
+    cursor: pointer;
+}
+.add-btn button{
+    width:150px;
+    height:50px;
+    font-size: 20px;
+}
+
+

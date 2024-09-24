@@ -7,8 +7,8 @@
     font-family: 'Montserrat',sans-serif;
 }
 
-.Sinale-product{
-    margin-top: 30px;
+.Sinale-course{
+    margin-top: 150px;
 }
 .flex-box{
     display:flex;
@@ -41,7 +41,7 @@
 }
 .small-img img{
     width: inherit;
-    height:
+    
     cursor: pointer;
     transition: all 0.3s ease;
 }

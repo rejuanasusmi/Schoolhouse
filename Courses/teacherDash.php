@@ -47,7 +47,7 @@
                         <i class="fa-solid fa-user-group"style="color: #168aad;"></i>
                     </div>
                     <div class="view">
-                        <a href="customerTable.php" class="btn">Details</a>
+                        <a href="" class="btn">Details</a>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
                         <i class="fa-solid fa-money-bill-trend-up" style="color: #168aad;"></i></i>
                     </div>
                     <div class="view">
-                        <a href="customertbl.php" class="btn">Details</a>
+                        <a href="" class="btn">Details</a>
                     </div>
                 </div>
 
@@ -136,7 +136,7 @@
                 </div>
                 <div class="new-sellers">
                     <div class="title">
-                        <h2>New Sellers</h2>
+                        <h2>New Students</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table>

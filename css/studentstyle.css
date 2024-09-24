@@ -1,0 +1,92 @@
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color:white;
+}
+
+.box{
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    margin-bottom: 30px;
+}
+.dashboard-text {
+    font-size: 1.2em; /* Adjust the text size */
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow for effect */
+    margin-left: 20px; /* Add spacing between the logo and text */
+}
+
+.bg-blue-gradient {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.bg-green-gradient {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+}
+
+.bg-red-gradient {
+    background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-body h4 {
+    font-size: 2rem;
+}
+
+.card a {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle transparent button effect */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 48px 0; /* Adjust the padding as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds shadow for visual appeal */
+}
+
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 48px); /* Full height minus padding */
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable scrolling */
+}
+
+.nav-link {
+    color: #333;
+    font-weight: bold;
+    padding: 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.nav-item {
+    margin-bottom: 1rem;
+}
+
+.nav-item i {
+    margin-right: 10px;
+    color: #007bff; /* Icon color */
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
