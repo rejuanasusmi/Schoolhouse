@@ -33,7 +33,7 @@
         //     }
 
         // }
-        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM students WHERE email='{$email}'"))>0){
+        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM teachers WHERE email='{$email}'"))>0){
             //$msg ="<div class='alert alert=danger'>{$email} - this email already exits</div>";
             echo "<script> alert('{$email}-this email alreay have a registered account')</script>";
         }else{
